@@ -65,24 +65,27 @@ public static double totalSaved(String[] args) {
 		}
 }
 	
-public static void PMT(String[] args1){
+public static double PMT(String[] args){
 	Scanner input = new Scanner(System.in);
 	
-	double PV= totalSaved(args1);
+	double PV= totalSaved(args);
 	
 	//How long the user wants to work
-		System.out.print("How many years do you plan on working: ");
-		int yearsWorking = input.nextInt();
+	System.out.print("How many years do you plan on working: ");
+	int yearsWorking = input.nextInt();
 		
-		//Amount of interest when investing
-		System.out.print("How much interest will be applied to your investments(between 0-20%): ");
-		double invIntrest = input.nextDouble();
+	//Amount of interest when investing
+	System.out.print("How much interest will be applied to your investments(between 0-20%): ");
+	double invIntrest = input.nextDouble();
 		
-		double PMT= (PV / (((Math.pow((1 + (invIntrest/12)), yearsWorking*12 )) - 1)/(invIntrest/12)));
+	double PMT= (PV / (((Math.pow((1 + ((invIntrest/100)/12)), yearsWorking*12 )) - 1)/((invIntrest/100)/12)));
 				
-		System.out.println("Your total amount saved would be" + PV + "and to save this you would need save"
-				+ PMT + " per month.");
+	System.out.println("Your retirement savings would be $" + PV + " if you saved this amount per month:");
+	return PMT;
 
+}
+public static void main(String[] args){
+	System.out.println(PMT(args));
 }
 }
 
