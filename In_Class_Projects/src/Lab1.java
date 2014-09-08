@@ -14,8 +14,8 @@ import java.util.Scanner;
  * RETURNS:
  * amount_needed, float, the amount needed for the user to retire in their ideal conditions.
  */
-public class Lab1 {
-	
+public class Lab1{
+
 
 	
 
@@ -65,7 +65,7 @@ public static double totalSaved(String[] args) {
 		}
 }
 	
-public static double PMT(String[] args1){
+public static void PMT(String[] args1){
 	Scanner input = new Scanner(System.in);
 	
 	double PV= totalSaved(args1);
@@ -78,16 +78,12 @@ public static double PMT(String[] args1){
 		System.out.print("How much interest will be applied to your investments(between 0-20%): ");
 		double invIntrest = input.nextDouble();
 		
-		PMT= PV / 
-		
+		double PMT= (PV / (((Math.pow((1 + (invIntrest/12)), yearsWorking*12 )) - 1)/(invIntrest/12)));
+				
+		System.out.println("Your total amount saved would be" + PV + "and to save this you would need save"
+				+ PMT + " per month.");
 
+}
 }
 
 
-
-
-
-public static void main(String[] args){
-	System.out.println(PMT(args));
-}
-}
